@@ -8,7 +8,7 @@ Basic
 import toolagent as ta
 
 if __name__ == "__main__":
-	agent = ta.Agent(model_checkpoint_path)
+  agent = ta.Agent(model_checkpoint_path)
   
   agent.load_tool_module(embedding_checkpoint_path) #默认加载基于检索的工具模块
   agent.tool_module.load_tools(toolset_path) #加载工具集
@@ -46,15 +46,15 @@ if __name__ == "__main__":
   embedding = AutoEmbedding(checkpoint_path_2)
   
   # 核心类
-	agent = Agent(model)
+  agent = Agent(model)
   
   #工具调用模块
   agent.tool_module = ToolCalling(embedding) #默认的工具调用模块 使用检索
   #agent.tool_module = ICLCalling(tool_prompt) 可使用其他工具调用模块，不检索
   agent.tool_module.load_tools(toolset_path)
  
-	#可选：RAG模块（暂时不考虑实现）
-	agent.RAG_module = DocRetriever(embedding) #RAG模块共享embedding，或额外定义
+  #可选：RAG模块（暂时不考虑实现）
+  agent.RAG_module = DocRetriever(embedding) #RAG模块共享embedding，或额外定义
   agent.RAG_module.load_documents(library_path)
   
   #可选：对话管理模块(自动加载默认模块)，涉及对话模版、对话历史、System Prompt等等
