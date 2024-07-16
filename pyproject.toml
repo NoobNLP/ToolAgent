@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=64", "setuptools-scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "toolagent"
+description = "A Highly-Modularized Tool Learning Framework for LLM Based Agent"
+dynamic = ["version", "dependencies"]
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Mengsong Wu", email = "radi.cat@qq.com" },
+    { name = "Tong Zhu", email = "tzhu1997@outlook.com" },
+    { name = "Xiang Zhang", email = "1805565641@qq.com" },
+    { name = "Han Han", email = "1411839206@qq.com" },
+]
+maintainers = [
+    { name = "Mengsong Wu", email = "radi.cat@qq.com" },
+    { name = "Tong Zhu", email = "tzhu1997@outlook.com" },
+    { name = "Xiang Zhang", email = "1805565641@qq.com" },
+    { name = "Han Han", email = "1411839206@qq.com" },
+]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["toolagent"]
+
+[tool.setuptools_scm]
+
+
+[project.urls]
+"Homepage" = "https://github.com/NoobNLP/ToolAgent"
+"Bug Tracker" = "https://github.com/NoobNLP/ToolAgent/issues"
+"Source" = "https://github.com/NoobNLP/ToolAgent/"

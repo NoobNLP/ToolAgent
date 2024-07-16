@@ -1,0 +1,12 @@
+data/*/
+!data/dataset_sample/
+src/toolagent/_version.py
+
+# Python Cache
+**/__pycache__/
+
+# Mac System File
+**/.DS_Store
+
+#mkdocs
+site/**
