@@ -10,7 +10,6 @@ format:
 test:
 	coverage run --source src -m pytest -vv .
 	coverage report -m
-	flake8
 
 .PHONY: pre
 pre:

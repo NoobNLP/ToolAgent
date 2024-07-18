@@ -1,13 +1,21 @@
 """Python Package named ToolAgent (A Highly-Modularized Tool Learning Framework for LLM Based Agent)"""
 
-from toolagent._version import __version__
-from toolagent.utils._log import setup_logging as _setup_logging
+from importlib.metadata import PackageNotFoundError
+from importlib.metadata import version
 
-logger = _setup_logging()
+from toolagent.utils.logging import get_logger
+
+logger = get_logger()
+
+# Official PEP 396
+try:
+    __version__ = version("toolagent")
+except PackageNotFoundError:
+    __version__ = "unknown version"
 
 __all__ = [
     "__version__",
 ]
 
 
-logger.info("ToolAgent (ta) initialization is completed.")
+logger.debug("ToolAgent (ta) initialization is completed.")
