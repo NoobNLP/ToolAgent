@@ -1,6 +1,6 @@
 data/*/
 !data/dataset_sample/
-src/toolagent/_version.py
+TA_log/*/
 
 # Python Cache
 **/__pycache__/

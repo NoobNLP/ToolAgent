@@ -3,9 +3,14 @@
 from importlib.metadata import PackageNotFoundError
 from importlib.metadata import version
 
+from toolagent.utils.config import get_config
 from toolagent.utils.logging import get_logger
 
-logger = get_logger()
+__all__ = [
+    "__version__",
+    "config",
+    "logger"
+]
 
 # Official PEP 396
 try:
@@ -13,9 +18,8 @@ try:
 except PackageNotFoundError:
     __version__ = "unknown version"
 
-__all__ = [
-    "__version__",
-]
+config = get_config()
+logger = get_logger()
 
 
-logger.debug("ToolAgent (ta) initialization is completed.")
+logger.info("ToolAgent (TA) initialization is completed.")

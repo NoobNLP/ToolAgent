@@ -1,6 +1,8 @@
 # ToolAgent
 
-## Contribution
+## Develop
+
+### Contribution
 
 ```bash
 git clone xxx
@@ -8,6 +10,15 @@ cd xxx
 pip install -e .
 pre-commit install
 ```
+
+### Docs
+
+For docstrings format, please refer to ./asset/example.google.py
+
+### Principle
+
+1. static duck typing (Use  more "protocal".)
+2. Component-Oriented Programming instead of Object-Oreinted Programming. (Try not use "subclass".)
 
 ## Usage
 
@@ -43,7 +54,7 @@ from toolagent.data.document import DocRetriever #暂不实现
 from toolagent.prompt.chat import ChatManager #可省略
 
 # 评测pipeline
-from toolagent.pipeline import EvalPipeline
+from toolagent.pipe import EvalPipeline
 from toolagent.data.dataset import Dataset
 
 if __name__ == "__main__":
@@ -83,35 +94,43 @@ if __name__ == "__main__":
 
 ## Code Structure
 
-tzhu: To modify according to latest changes.
-
 ```yaml
-__init__: 初始化日志
-_version: 版本信息
-pipeline: 简易管线
+__init__: 版本信息，设置，日志
 
 agents/: 助手
-	agent: 默认助手类
+	- agent: 默认助手类
 
 data/: 数据
-	dataset: 数据集
-	document/: 外部文档
-		pool: 助手的RAG模块
-		parse: 各种文档解析处理/切片等
 
-tools/: 工具
-	tool: 工具类
-	calling: 助手的工具调用模块
+chat/: 聊天
+  - prompt: 对话采用的prompt模板
+  - DialogueManagement: 助手的会话管理模块
 
-model/: 模型
-	LLM/: 大语言模型
-	VLM/:
+models/: 模型
 
-prompt/:
-	chat: 助手的对话管理模块
+pipe/:
+  - trainer: 训练
+  - evaluator: 评价
 
 retrieval/: 检索
-	retriever: 检索类，用于工具调用/RAG模块
-	./embedding/: 词向量模型
-	./vectorstore/: 检索向量库
+	- retriever: 检索类，用于工具调用/RAG模块
+	- embedding: 词向量模型
+	- vectorstore: 检索向量库
+
+server/: 服务器
+
+tools/: 工具
+  - tool: 工具类
+	- ToolCallingManagement: 助手的工具调用模块
+
+types/: 类型标注，类型检查，
+  - data/:
+  - proto/:
+  - error/:
+
+utils/: TA辅助
+	- config: TA全局设置
+	- logging: TA日志
+	- io: 文件存取
+	- random: 随机数
 ```

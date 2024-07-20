@@ -1,6 +1,6 @@
 import random
 import string
-
+import hashlib
 
 def generate_random_key(length=8):
     """
@@ -17,3 +17,6 @@ def generate_random_key(length=8):
     # 随机选择指定数量的字符并生成字符串
     random_key = "".join(random.choice(characters) for i in range(length))
     return random_key
+
+def calculate_tool_hash():
+    ...
