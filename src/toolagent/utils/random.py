@@ -4,19 +4,38 @@ import hashlib
 
 def generate_random_key(length=8):
     """
-    生成指定长度的随机字符串。
+    Generate a random string of specified length.
 
-    参数:
-    length (int): 随机字符串的长度。默认值为10。
+    Args:
+        length (int): The length of the random string. Default is 10.
 
-    返回:
-    str: 生成的随机字符串。
+    Returns:
+        str: The generated random string.
     """
-    # 定义字符串的所有可能字符
+    # Define all possible characters for the string
     characters = string.ascii_letters + string.digits + string.punctuation
-    # 随机选择指定数量的字符并生成字符串
+    # Randomly select the specified number of characters and generate the string
     random_key = "".join(random.choice(characters) for i in range(length))
     return random_key
 
-def calculate_tool_hash():
-    ...
+def calculate_tool_hash(tool_name, tool_description, tool_set, input_parameters, output_parameters):
+    """
+    Calculate the hash value of a tool.
+
+    Args:
+        tool_name (str): The name of the tool.
+        tool_description (str): The description of the tool.
+        tool_set (str): The name of the tool set.
+        input_parameters (list): The list of input parameters for the tool.
+        output_parameters (list): The list of output parameters for the tool.
+
+    Returns:
+        str: The hash value of the tool.
+    """
+    data = f"{tool_set}{tool_name}{tool_description}{str(input_parameters)}{str(output_parameters)}"
+    
+    hash_object = hashlib.sha256()
+    hash_object.update(data.encode('utf-8'))
+    
+    return hash_object.hexdigest()
+
